@@ -7,7 +7,7 @@ Module for zooming in an array.
 """
 
 
-def zoom_array(lst: Tuple, factor: int = 2) -> Tuple:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """
     Zoom in on the elements of the input list.
 
@@ -16,9 +16,9 @@ def zoom_array(lst: Tuple, factor: int = 2) -> Tuple:
         factor (int, optional): The zoom factor. Defaults to 2.
 
     Returns:
-        Tuple: The zoomed-in list.
+        List: The zoomed-in list.
     """
-    zoomed_in: Tuple = [
+    zoomed_in: List = [
         item for item in lst
         for i in range(factor)
     ]
