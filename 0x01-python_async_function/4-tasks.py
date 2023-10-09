@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""
-Module for Task 4
-"""
-
-
+'''Task 4's module.
+'''
 import asyncio
 from typing import List
+
+
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-def task_wait_n(n: int, max_delay: int) -> List[asyncio.Task]:
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """
     Returns a list of asyncio.Tasks.
 
@@ -20,4 +19,7 @@ def task_wait_n(n: int, max_delay: int) -> List[asyncio.Task]:
     Returns:
         List[asyncio.Task]: List of tasks that wait for a random delay.
     """
-    return [task_wait_random(max_delay) for _ in range(n)]
+    wait_times = await asyncio.gather(
+        *tuple(map(lambda _: task_wait_random(max_delay), range(n)))
+    )
+    return sorted(wait_times)
