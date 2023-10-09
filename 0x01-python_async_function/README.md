@@ -8,7 +8,7 @@ Use the random module.
 Repo Information:
 - GitHub repository: alx-backend-python
 - Directory: 0x01-python_async_function
-- File: 0-basic_async_syntax.py
+- File: [0-basic_async_syntax.py](./0-basic_async_syntax.py)
   
 ## 1. Let's execute multiple coroutines at the same time with async (Mandatory)
 Import wait_random from the previous python file that you’ve written and write an async routine called wait_n that takes in 2 int arguments (in this order): n and max_delay. You will spawn wait_random n times with the specified max_delay.
@@ -18,7 +18,7 @@ wait_n should return the list of all the delays (float values). The list of the 
 Repo Information:
 - GitHub repository: alx-backend-python
 - Directory: 0x01-python_async_function
-- File: 1-concurrent_coroutines.py
+- File: [1-concurrent_coroutines.py](./1-concurrent_coroutines.py)
   
 ## 2. Measure the runtime (Mandatory)
 From the previous file, import wait_n into 2-measure_runtime.py.
@@ -30,7 +30,7 @@ Use the time module to measure an approximate elapsed time.
 Repo Information:
 - GitHub repository: alx-backend-python
 - Directory: 0x01-python_async_function
-- File: 2-measure_runtime.py
+- File: [2-measure_runtime.py](./2-measure_runtime.py)
   
 ## 3. Tasks (Mandatory)
 Import wait_random from 0-basic_async_syntax.
@@ -40,7 +40,7 @@ Write a function (do not create an async function, use the regular function synt
 Repo Information:
 - GitHub repository: alx-backend-python
 - Directory: 0x01-python_async_function
-- File: 3-tasks.py
+- File: [3-tasks.py](./3-tasks.py)
   
 ## 4. Tasks (Mandatory)
 Take the code from wait_n and alter it into a new function task_wait_n. The code is nearly identical to wait_n except task_wait_random is being called.
@@ -48,4 +48,4 @@ Take the code from wait_n and alter it into a new function task_wait_n. The code
 Repo Information:
 - GitHub repository: alx-backend-python
 - Directory: 0x01-python_async_function
-- File: 4-tasks.py
+- File: [4-tasks.py](./4-tasks.py)
