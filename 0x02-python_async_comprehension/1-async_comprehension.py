@@ -15,12 +15,3 @@ async def async_comprehension() -> List[float]:
     comprehension over async_generator.
     '''
     return [i async for i in async_generator()]
-
-
-# For testing
-async def main():
-    print(await async_comprehension())
-
-# Run the main function
-if __name__ == "__main__":
-    import asyncio
