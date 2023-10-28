@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Generic utilities for github org client.
+"""
 import unittest
 from parameterized import parameterized
 from unittest.mock import patch, Mock
