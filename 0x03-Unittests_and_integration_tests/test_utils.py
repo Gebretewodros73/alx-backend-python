@@ -5,8 +5,9 @@ from parameterized import parameterized
 from unittest.mock import patch, Mock
 from utils import get_json, memoize
 
+
 class TestGetJson(unittest.TestCase):
-    
+
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
@@ -22,6 +23,7 @@ class TestGetJson(unittest.TestCase):
         mock_get.assert_called_once_with(test_url)
         self.assertEqual(result, test_payload)
 
+
 class TestMemoize(unittest.TestCase):
 
     class TestClass:
@@ -34,13 +36,14 @@ class TestMemoize(unittest.TestCase):
 
     def test_memoize(self):
         test_obj = self.TestClass()
-        with patch.object(self.TestClass, 'a_method', return_value=42) as mock_method:
+        with patch.object(self.TestClass, 'a_method', return_value=42)\
+                as mock_method:
             result1 = test_obj.a_property
             result2 = test_obj.a_property
             mock_method.assert_called_once()
             # Ensure a_method is called only once
             self.assertEqual(result1, result2)
 
+
 if __name__ == '__main__':
     unittest.main()
-
