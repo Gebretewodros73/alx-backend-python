@@ -1,38 +1,48 @@
 #!/usr/bin/env python3
-
 """
-Unit tests for client.GithubOrgClient class.
+GithubOrgClient module.
 """
 
-import unittest
-from unittest.mock import patch
-from parameterized import parameterized
-from client import GithubOrgClient
+import requests
+from typing import List
 
 
-class TestGithubOrgClient(unittest.TestCase):
+class GithubOrgClient:
     """
-    Test cases for GithubOrgClient class.
+    Class for interacting with the GitHub API.
     """
 
-    @parameterized.expand([
-        ("google", {"payload": True}),
-        ("abc", {"payload": False}),
-    ])
-    @patch('client.get_json')
-    def test_org(self, org, expected_payload, mock_get_json):
+    def __init__(self, org_name: str) -> None:
         """
-        Test org method of GithubOrgClient class.
+        Initialize the GithubOrgClient with the provided organization name.
         """
-        mock_get_json.return_value = expected_payload
+        self.org_name = org_name
 
-        github_client = GithubOrgClient(org)
-        result = github_client.org
+    def org(self) -> dict:
+        """
+        Get information about the organization.
+        """
+        url = f"https://api.github.com/orgs/{self.org_name}"
+        response = self._get_json(url)
+        return response
 
-        mock_get_json.assert_called_once_with(
-            f"https://api.github.com/orgs/{org}")
-        self.assertEqual(result, expected_payload)
+    def public_repos(self) -> List[dict]:
+        """
+        Get the list of public repositories for the organization.
+        """
+        url = self._public_repos_url()
+        response = self._get_json(url)
+        return response
 
+    def _public_repos_url(self) -> str:
+        """
+        Generate the URL for getting the list of public repositories.
+        """
+        return f"https://api.github.com/orgs/{self.org_name}/repos"
 
-if __name__ == '__main__':
-    unittest.main()
+    def _get_json(self, url: str) -> dict:
+        """
+        Make an HTTP GET request and return the JSON response.
+        """
+        response = requests.get(url)
+        return response.json()
